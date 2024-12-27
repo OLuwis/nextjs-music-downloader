@@ -1,19 +1,26 @@
+"use client"
+
 import Title from "@/app/components/home/Title";
 import Subtitle from "@/app/components/home/Subtitle";
 import Input from "@/app/components/common/Input";
 import BSolid from "@/app/components/common/buttons/BSolid";
 import BWhite from "./components/common/buttons/BWhite";
+import { useState } from "react";
 
 export default function Home() {
+  const [inputValue, setInputValue] = useState("")
+
   return (
     <div className="relative overflow-hidden">
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24">
         <div className="text-center">
-          <Title text="Music Downloader" />
+          <a href=".">
+            <Title text="Music Downloader" />
+          </a>
           <Subtitle text="Simple and free music downloader." />
           <div className="mt-2 sm:mt-3 mx-auto max-w-xl relative">
             <div className="relative z-10 flex gap-x-3 p-3">
-              <Input type="email" value="" placeholder="Paste your track url here." />
+              <Input type="email" value={inputValue} placeholder="Paste your track url here." onChange={(e) => setInputValue(e.target.value)} />
               <div>
                 <BSolid leftIcon={
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>} isLink href="#" />
