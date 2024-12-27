@@ -20,7 +20,7 @@ export default function Home() {
           <Subtitle text="Simple and free music downloader." />
           <div className="mt-2 sm:mt-3 mx-auto max-w-xl relative">
             <div className="relative z-10 flex gap-x-3 p-3">
-              <Input type="email" value={inputValue} placeholder="Paste your track url here." onChange={(e) => setInputValue(e.target.value)} />
+              <Input type="url" value={inputValue} placeholder="Paste your track url here." onChange={(e) => setInputValue(e.target.value)} />
               <div>
                 <BSolid leftIcon={
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>} isLink href="#" />
