@@ -21,13 +21,13 @@ export default function Home() {
           </a>
           <Subtitle text="Simple and free music downloader." />
           <div className="mt-2 sm:mt-3 mx-auto max-w-xl relative">
-            <div className="relative z-10 flex gap-x-3 p-3">
+            <form action="/download" method="GET" className="relative z-10 flex gap-x-3 p-3">
               <Input type="url" value={inputValue} placeholder="Paste your track url here." onChange={(e) => setInputValue(e.target.value)} />
               <div>
                 <BSolid leftIcon={
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>} isLink href="#" />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>} />
               </div>
-            </div>
+            </form>
             <div className="hidden md:block absolute top-0 end-0 -translate-y-12 translate-x-12">
               <svg className="w-16 h-auto text-orange-500" width="121" height="135" viewBox="0 0 121 135" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 16.4754C11.7688 27.4499 21.2452 57.3224 5 89.0164" stroke="currentColor" strokeWidth="10" strokeLinecap="round" />

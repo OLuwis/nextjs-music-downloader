@@ -10,7 +10,7 @@ export default function Input({
 	type: HTMLInputTypeAttribute,
 	name?: string,
 	value: string,
-	onChange: ChangeEventHandler<HTMLInputElement>,
+	onChange?: ChangeEventHandler<HTMLInputElement>,
 	placeholder?: string
 }) {
 	return (
