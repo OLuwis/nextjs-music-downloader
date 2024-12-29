@@ -10,6 +10,7 @@ import { useTheme } from "next-themes";
 
 export default function Home() {
   const [inputValue, setInputValue] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
   const { theme, setTheme } = useTheme()
 
   return (
@@ -21,11 +22,15 @@ export default function Home() {
           </a>
           <Subtitle text="Simple and free music downloader." />
           <div className="mt-2 sm:mt-3 mx-auto max-w-xl relative">
-            <form action="/download" method="GET" className="relative z-10 flex gap-x-3 p-3">
+            <form action="/download" method="GET" className="relative z-10 flex gap-x-3 p-3" onSubmit={() => setIsLoading(true)} >
               <Input type="url" value={inputValue} placeholder="Paste your track url here." onChange={(e) => setInputValue(e.target.value)} />
               <div>
                 <BSolid leftIcon={
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>} />
+                  isLoading ?
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-loader-circle animate-spin"><path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg>
+                    :
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                } />
               </div>
             </form>
             <div className="hidden md:block absolute top-0 end-0 -translate-y-12 translate-x-12">
