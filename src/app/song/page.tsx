@@ -11,6 +11,8 @@ export default async function Page({
   const url = (await searchParams).url;
   const data = url!.includes("soundcloud") ? await soundCloudFetchTrackData(url as string) : await youtubeMusicFetchTrackData(url as string);
 
+  console.log(data)
+
   return (
     <>
       <div className="relative overflow-hidden">
