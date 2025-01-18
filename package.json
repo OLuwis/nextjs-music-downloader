@@ -17,6 +17,7 @@
     "preline": "^2.6.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "undici": "^7.2.3",
     "soundcloud.ts": "^0.6.2",
     "youtubei.js": "^12.2.0"
   },
