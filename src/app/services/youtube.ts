@@ -10,8 +10,6 @@ export function createYoutube(): Promise<Innertube> {
 
 // Return track data from url
 export async function fetchTrackData(_url: string, _youtube?: Innertube): Promise<Song> {
-	Log.setLevel(Log.Level.DEBUG)
-
 	stdout.write("Step 1")
 	const youtube = _youtube ? _youtube : await createYoutube();
 
@@ -29,6 +27,7 @@ export async function fetchTrackData(_url: string, _youtube?: Innertube): Promis
 	const title = info.basic_info.title || "";
 	const cover = info.basic_info.thumbnail ? info.basic_info.thumbnail[0].url : "";
 
+	stdout.write(JSON.stringify(info))
 	stdout.write("Step 6")
 	const streamUrl = info.chooseFormat({ type: "video+audio" }).decipher(youtube.session.player);
 
