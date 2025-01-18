@@ -12,12 +12,10 @@ export default async function Page({
   const url = (await searchParams).url;
 
   stdout.write(url as string)
-  console.log(url)
 
   const data = url!.includes("soundcloud") ? await soundCloudFetchTrackData(url as string) : await youtubeMusicFetchTrackData(url as string);
 
   stdout.write(JSON.stringify(data))
-  console.log(data)
 
   return (
     <>
