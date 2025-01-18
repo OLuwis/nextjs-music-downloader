@@ -1,5 +1,4 @@
 import Innertube from "youtubei.js";
-import { Log } from "youtubei.js"
 import Song from "../types/song";
 import { stdout } from "process";
 
@@ -10,25 +9,24 @@ export function createYoutube(): Promise<Innertube> {
 
 // Return track data from url
 export async function fetchTrackData(_url: string, _youtube?: Innertube): Promise<Song> {
-	stdout.write("Step 1")
 	const youtube = _youtube ? _youtube : await createYoutube();
 
-	stdout.write("Step 2")
 	const url = new URL(_url);
+	stdout.write(`url => ${url.toString()}`)
 
-	stdout.write("Step 3")
 	const id = url.searchParams.get("v") || "";
+	stdout.write(`id => ${id}`)
 
-	stdout.write("Step 4")
 	const info = await youtube.music.getInfo(id);
+	stdout.write(`info => ${JSON.stringify(info)}`)
 
-	stdout.write("Step 5")
 	const author = info.basic_info.author || "";
 	const title = info.basic_info.title || "";
 	const cover = info.basic_info.thumbnail ? info.basic_info.thumbnail[0].url : "";
+	stdout.write(`author => ${author}`)
+	stdout.write(`title => ${title}`)
+	stdout.write(`cover => ${cover}`)
 
-	stdout.write(JSON.stringify(info))
-	stdout.write("Step 6")
 	const streamUrl = info.chooseFormat({ type: "video+audio" }).decipher(youtube.session.player);
 
 	stdout.write("Step 7")
