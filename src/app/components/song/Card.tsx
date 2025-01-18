@@ -4,8 +4,7 @@ import Song from "@/app/types/song";
 import Image from "next/image";
 import { DownloadIcon, LoaderIcon } from "@/app/icons";
 import { useState } from "react";
-import { createFFmpeg, fetchFFmpegBinaries } from "@/app/services/ffmpeg";
-import { fetchFile } from "@ffmpeg/util";
+import { createFFmpeg, exportFFmpegOutputs, fetchFFmpegBinaries, fetchFFmpegInputs, fetchFFmpegOutputs, processFFmpegInputs } from "@/app/services/ffmpeg";
 
 export default function SongCard({
 	data
@@ -32,9 +31,7 @@ export default function SongCard({
 		await ffmpeg.load(binaries);
 
 		setDebugText(JSON.stringify(data))
-		const fetch = await fetchFile(data.stream.url.replace("https", "http"))
-		setDebugText(fetch.toString())
-		/* setButtonText("Fetching input files...");
+		setButtonText("Fetching input files...");
 		await fetchFFmpegInputs(data, ffmpeg);
 
 		setButtonText("Processing input files...");
@@ -47,7 +44,7 @@ export default function SongCard({
 		exportFFmpegOutputs(data, blob);
 
 		setIsLoading(false);
-		setButtonText("Download"); */
+		setButtonText("Download");
 	}
 
 	return (
