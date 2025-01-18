@@ -2,6 +2,7 @@ import SongCard from "@/app/components/song/Card";
 import Title from "@/app/components/home/Title";
 import { fetchTrackData as soundCloudFetchTrackData } from "@/app/services/soundcloud";
 import { fetchTrackData as youtubeMusicFetchTrackData } from "@/app/services/youtube";
+import { stdout } from "process";
 
 export default async function Page({
   searchParams
@@ -9,8 +10,13 @@ export default async function Page({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const url = (await searchParams).url;
+
+  stdout.write(url as string)
+  console.log(url)
+
   const data = url!.includes("soundcloud") ? await soundCloudFetchTrackData(url as string) : await youtubeMusicFetchTrackData(url as string);
 
+  stdout.write(JSON.stringify(data))
   console.log(data)
 
   return (

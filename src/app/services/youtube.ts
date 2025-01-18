@@ -1,4 +1,5 @@
 import Innertube from "youtubei.js";
+import { Log } from "youtubei.js"
 import Song from "../types/song";
 
 // Return new instance of Youtube API
@@ -8,6 +9,8 @@ export function createYoutube(): Promise<Innertube> {
 
 // Return track data from url
 export async function fetchTrackData(_url: string, _youtube?: Innertube): Promise<Song> {
+	Log.setLevel(Log.Level.DEBUG)
+
 	const youtube = _youtube ? _youtube : await createYoutube();
 
 	const url = new URL(_url);
