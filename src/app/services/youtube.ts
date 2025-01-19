@@ -13,7 +13,7 @@ export function createYoutube(_visitorData?: string): Promise<Innertube> {
 export async function fetchTrackData(_url: string, _youtube?: Innertube): Promise<Song> {
 	const res = await fetch("https://music.youtube.com", {
 		headers: {
-			"User-Agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/13 2.0.6834.79 Mobile Safari/537.36"
+			"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36"
 		}
 	})
 
