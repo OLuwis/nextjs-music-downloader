@@ -58,7 +58,5 @@ export function exportFFmpegOutputs(_data: Song, _blob: Blob) {
 	anchor.href = url;
 	anchor.setAttribute("download", `${data.artist} - ${data.title}.${data.stream.formats.output}`);
 
-	//document.body.appendChild(anchor);
 	anchor.click();
-	//document.body.removeChild(anchor);
 }

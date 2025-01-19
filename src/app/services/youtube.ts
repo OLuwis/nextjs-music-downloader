@@ -3,13 +3,28 @@ import Song from "../types/song";
 import { stdout } from "process";
 
 // Return new instance of Youtube API
-export function createYoutube(): Promise<Innertube> {
-	return Innertube.create();
+export function createYoutube(_visitorData?: string): Promise<Innertube> {
+	const visitorData = _visitorData ?? "";
+
+	return Innertube.create({ visitor_data: visitorData });
 }
 
 // Return track data from url
 export async function fetchTrackData(_url: string, _youtube?: Innertube): Promise<Song> {
-	const youtube = _youtube ? _youtube : await createYoutube();
+	const res = await fetch("https://music.youtube.com", {
+		headers: {
+			"User-Agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/13 2.0.6834.79 Mobile Safari/537.36"
+		}
+	})
+
+	const page = await res.text();
+
+	const firstIndex = page.indexOf("visitorData");
+	const secondIndex = page.indexOf("userAgent", firstIndex);
+
+	const visitorData = page.substring(firstIndex + "visitorData\":\"".length, secondIndex - "\",\"".length);
+
+	const youtube = _youtube ?? await createYoutube(visitorData);
 
 	const url = new URL(_url);
 	stdout.write(`url => ${url.toString()}`)
@@ -45,3 +60,11 @@ export async function fetchTrackData(_url: string, _youtube?: Innertube): Promis
 		}
 	}
 }
+
+/* export async function authenticate(_youtube?: Innertube): Promise<Innertube> {
+	const youtube = _youtube ?? await createYoutube();
+
+	await youtube.session.signIn();
+
+	return youtube;
+} */

@@ -8,7 +8,7 @@ export function createSoundcloud(): Soundcloud {
 
 // Returns track data from url
 export async function fetchTrackData(_url: string, _soundcloud?: Soundcloud): Promise<Song> {
-	const soundcloud = _soundcloud ? _soundcloud : createSoundcloud();
+	const soundcloud = _soundcloud ?? createSoundcloud();
 
 	const url = _url
 
