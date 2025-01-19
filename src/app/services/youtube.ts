@@ -19,10 +19,14 @@ export async function fetchTrackData(_url: string, _youtube?: Innertube): Promis
 
 	const page = await res.text();
 
+	stdout.write(page);
+
 	const firstIndex = page.indexOf("visitorData");
 	const secondIndex = page.indexOf("userAgent", firstIndex);
 
 	const visitorData = page.substring(firstIndex + "visitorData\":\"".length, secondIndex - "\",\"".length);
+
+	stdout.write(visitorData);
 
 	const youtube = _youtube ?? await createYoutube(visitorData);
 
