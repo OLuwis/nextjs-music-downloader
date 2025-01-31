@@ -1,5 +1,6 @@
 import { Soundcloud } from "soundcloud.ts";
 import Song from "@/app/types/song";
+import log from "loglevel";
 
 // Returns new instance of Soundcloud API
 export function createSoundcloud(): Soundcloud {
@@ -7,12 +8,17 @@ export function createSoundcloud(): Soundcloud {
 }
 
 // Returns track data from url
-export async function fetchTrackData(_url: string, _soundcloud?: Soundcloud): Promise<Song> {
+export async function fetchTrackData(_url: string, _soundcloud?: Soundcloud): Promise<Song | null> {
 	const soundcloud = _soundcloud ?? createSoundcloud();
 
-	const url = _url
+	const url = _url;
 
-	const info = await soundcloud.tracks.get(url);
+	const info = await soundcloud.tracks.get(url).catch((err) => {
+		log.error(`fetchTrackDataError${err}`);
+		return null;
+	});
+
+	if (!info) return null;
 
 	const author = info.user.username;
 	const title = info.title;
