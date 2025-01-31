@@ -1,11 +1,7 @@
 "use client";
 
-import Title from "@/app/components/home/Title";
-import Subtitle from "@/app/components/home/Subtitle";
-import Input from "@/app/components/common/Input";
-import ButtonSolid from "@/app/components/common/buttons/Solid";
-import ButtonWhite from "@/app/components/common/buttons/White";
-import { LoaderIcon, ArrowRightIcon, GithubIcon, SunIcon, MoonIcon } from "@/app/icons";
+import { Title, Subtitle, Input, ButtonSolid, ButtonWhite, Chip } from "@/app/components";
+import { LoaderIcon, ArrowRightIcon, GithubIcon, SunIcon, MoonIcon, SoundCloud, YoutubeMusic } from "@/app/icons";
 import { useState } from "react";
 import { useTheme } from "next-themes";
 
@@ -21,7 +17,13 @@ export default function Home() {
           <a href=".">
             <Title text="Music Downloader" />
           </a>
-          <Subtitle text="Simple and free music downloader." />
+          <div>
+            <Subtitle text="Currently supported websites:" />
+            <div className="mt-4 mb-3 flex flex-row justify-center gap-x-2" >
+              <Chip text="SoundCloud" icon={<SoundCloud className="size-4 fill-white" />} className="bg-orange-600 text-white" />
+              <Chip text="Youtube Music (in progress...)" icon={<YoutubeMusic className="size-4 fill-white" />} className="bg-red-600 text-white" />
+            </div>
+          </div>
           <div className="mt-2 sm:mt-3 mx-auto max-w-xl relative">
             <form action="/song" method="GET" className="relative z-10 flex gap-x-3 p-3" onSubmit={() => setIsLoading(true)} >
               <Input type="url" name="url" value={inputValue} placeholder="Paste your track url here." onChange={(e) => setInputValue(e.target.value)} />
@@ -50,12 +52,12 @@ export default function Home() {
           <div className="mt-2 sm:mt-3">
             {
               theme === "dark" ?
-                <ButtonWhite leftIcon={<MoonIcon />} text="Dark Mode" onClick={() => setTheme("light")}
+                <ButtonWhite size="sm" leftIcon={<MoonIcon className="size-4" />} text="Dark Mode" onClick={() => setTheme("light")}
                 />
                 :
-                <ButtonWhite leftIcon={<SunIcon />} text="Light Mode" onClick={() => setTheme("dark")} />
+                <ButtonWhite size="sm" leftIcon={<SunIcon className="size-4" />} text="Light Mode" onClick={() => setTheme("dark")} />
             }
-            <ButtonWhite leftIcon={<GithubIcon />} text="Github" isLink href="#" />
+            <ButtonWhite size="sm" leftIcon={<GithubIcon className="size-4" />} text="Github" isLink href="https://github.com/OLuwis/nextjs-music-downloader" />
           </div>
         </div>
       </div>
