@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg" style="display:block; width: 50%;">
+  <h3 align="center">
+    NextJS Music Downloader
+  </h3>
+</p>
 
-## Getting Started
+### [BR]
 
-First, run the development server:
+### Introdução
 
-```bash
+Este projeto foi feito para baixar músicas de diversas plataformas de streaming.
+
+O projeto foi feito usando NextJS 15+, TailwindCSS 3+, e FFmpeg 0+.
+
+O projeto faz uso de SSR e CSR, para renderização de telas e páginas, também usa SSR como um servidor proxy para consulta de dados sem restrição de CORS, e também é feito com Typescript.
+
+### Feito com
+![Next.js Badge](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=fff&style=for-the-badge)
+![React Badge](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000&style=for-the-badge)
+![TypeScript Badge](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff&style=for-the-badge)
+![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=for-the-badge)
+![ESLint Badge](https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=fff&style=for-the-badge)
+![Lucide Badge](https://img.shields.io/badge/Lucide-F56565?logo=lucide&logoColor=fff&style=for-the-badge)
+![Simple Icons Badge](https://img.shields.io/badge/Simple%20Icons-111?logo=simpleicons&logoColor=fff&style=for-the-badge)
+
+### Desenvolvimento Local
+
+1. Clone este repositório
+```sh
+git clone https://github.com/OLuwis/nextjs-music-downloader.git
+```
+2. Inicie o servidor local
+```sh
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+3. Acesse o servidor no seu navegador
+```sh
+http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### [EN]
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Introduction
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project was created to download music from various streaming platforms.
 
-## Learn More
+The project was built using NextJS 14+, TailwindCSS 3+, and FFmpeg 0+.
 
-To learn more about Next.js, take a look at the following resources:
+The project employs SSR and CSR for rendering screens and pages, it also uses SSR as a proxy server for data queries without CORS restrictions, and is developed with TypeScript.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Built with
+![Next.js Badge](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=fff&style=for-the-badge)
+![React Badge](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000&style=for-the-badge)
+![TypeScript Badge](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff&style=for-the-badge)
+![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=for-the-badge)
+![ESLint Badge](https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=fff&style=for-the-badge)
+![Lucide Badge](https://img.shields.io/badge/Lucide-F56565?logo=lucide&logoColor=fff&style=for-the-badge)
+![Simple Icons Badge](https://img.shields.io/badge/Simple%20Icons-111?logo=simpleicons&logoColor=fff&style=for-the-badge)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Local Development
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Clone this repository
+```sh
+git clone https://github.com/OLuwis/nextjs-music-downloader.git
+```
+2. Start the local server
+```sh
+npm run dev
+```
+3. Access the server in your browser
+```sh
+http://localhost:3000
+```
