@@ -1,6 +1,7 @@
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { fetchFile, toBlobURL } from "@ffmpeg/util";
 import Song from "@/app/types/song";
+import log from "loglevel";
 
 // Returns new FFmpeg instance
 export function createFFmpeg(): FFmpeg {
@@ -10,6 +11,7 @@ export function createFFmpeg(): FFmpeg {
 // Returns FFmpeg binaries
 export async function fetchFFmpegBinaries(_baseURL?: string): Promise<{ coreURL: string, wasmURL: string, workerURL?: string }> {
 	const baseURL = _baseURL ?? "https://unpkg.com/@ffmpeg/core@0.12.10/dist/umd";
+	log.info(`FFmpegUrl: ${baseURL}`);
 
 	const coreURL = await toBlobURL(`${baseURL}/ffmpeg-core.js`, "text/javascript");
 	const wasmURL = await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, "application/wasm");
@@ -35,6 +37,7 @@ export async function processFFmpegInputs(_data: Song, _ffmpeg?: FFmpeg) {
 	const data = _data;
 
 	await ffmpeg.exec(["-y", "-vn", "-i", `audio.${data.stream.formats.input}`, "-i", "image.jpg", "-map", "0", "-map", "1", "-c:0", "copy", "-c:1", "copy", "-disposition:1", "attached_pic", "-metadata", `artist=${data.artist}`, "-metadata", `title=${data.title}`, `${data.artist} - ${data.title}.${data.stream.formats.output}`]);
+	log.debug(`FFmpegCommand: "-y -vn -i "audio.${data.stream.formats.input}" -i "image.jpg" -map 0 -map 1 -c:0 copy -c:1 copy -disposition:1 attached_pic -metadata artist=${data.artist} -metadata title=${data.title} "${data.artist} - ${data.title}.${data.stream.formats.output}"`)
 }
 
 // Fetches FFmpeg file outputs
