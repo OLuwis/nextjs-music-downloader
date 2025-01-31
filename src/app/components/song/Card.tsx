@@ -5,6 +5,7 @@ import Image from "next/image";
 import { DownloadIcon, LoaderIcon } from "@/app/icons";
 import { useState } from "react";
 import { createFFmpeg, exportFFmpegOutputs, fetchFFmpegBinaries, fetchFFmpegInputs, fetchFFmpegOutputs, processFFmpegInputs } from "@/app/services/ffmpeg";
+import log from "loglevel";
 
 export default function SongCard({
 	data
@@ -13,16 +14,13 @@ export default function SongCard({
 }) {
 	const [isLoading, setIsLoading] = useState(false);
 	const [buttonText, setButtonText] = useState("Download");
-	const [debugText, setDebugText] = useState("");
 
 	const startDownload = async () => {
 		setIsLoading(true);
 		setButtonText("Creating FFmpeg instance...");
 		const ffmpeg = createFFmpeg();
 
-		ffmpeg.on("log", ({ message }) => {
-			setDebugText((debugText) => `${debugText}\n\n${message}`);
-		})
+		ffmpeg.on("log", ({ message }) => log.debug(`FFmpeg: ${message}`));
 
 		setButtonText("Fetching FFmpeg binaries...");
 		const binaries = await fetchFFmpegBinaries();
@@ -30,7 +28,6 @@ export default function SongCard({
 		setButtonText("Loading FFmpeg binaries...");
 		await ffmpeg.load(binaries);
 
-		setDebugText(JSON.stringify(data))
 		setButtonText("Fetching input files...");
 		await fetchFFmpegInputs(data, ffmpeg);
 
@@ -71,9 +68,6 @@ export default function SongCard({
 					</button>
 				</div>
 			</div>
-			<p>
-				{debugText}
-			</p>
 		</div>
 	);
 }
